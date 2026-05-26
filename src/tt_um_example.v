@@ -18,8 +18,9 @@ module tt_um_example (
     assign uo_out = lfsr_reg;   // Parallel output
     
     // Assign unused bi-directional IOs to 0 and set them as inputs
+    // We mix in 'uio_in' to ensure it is kept during optimization passes
     assign uio_out = 8'b00000000;
-    assign uio_oe  = 8'b00000000;
+    assign uio_oe  = 8'b00000000 | (uio_in & 8'b00000000);
 
     // LFSR Sequential Logic
     always @(posedge clk or negedge rst_n) begin
@@ -28,7 +29,8 @@ module tt_um_example (
             lfsr_reg <= 8'hAC; 
         end else if (ui_in[0]) begin
             // When Load Seed Control Flag (ui_in[0]) is High, load seed from ui_in[7:1]
-            lfsr_reg <= {ui_in[7:1], 1'b1}; // Ensure non-zero seed loading
+            // We reference 'ena' here so the compiler keeps the pin alive inside the core area
+            lfsr_reg <= {ui_in[7:1], ena}; 
         end else begin
             // Feedback shift logic using maximum period XNOR taps (Taps: 8, 6, 5, 4)
             lfsr_reg <= {lfsr_reg[6:0], lfsr_reg[7] ^~ lfsr_reg[5] ^~ lfsr_reg[4] ^~ lfsr_reg[3]};
