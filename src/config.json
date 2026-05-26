@@ -1,7 +1,8 @@
 {
-  "TOP_MODULE": "tt_um_example",
-  "VERILOG_FILES": [
-    "dir::tt_um_example.v"
-  ],
-  "COMPILE_PRIMARY_AS_IS": true
+  "title": "8-bit LFSR Random Generator",
+  "author": "Raksha",
+  "description": "An 8-bit pseudo-random number generator using LFSR.",
+  "language": "Verilog",
+  "top_module": "tt_um_raksha_lfsr",
+  "clock_hz": 1000000
 }
