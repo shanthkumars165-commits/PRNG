@@ -1,21 +1,32 @@
 import cocotb
 from cocotb.clock import Clock
-from cocotb.triggers import ClockCycles
+from cocotb.triggers import RisingEdge
 
 @cocotb.test()
-async def test_lfsr_simple(dut):
-    dut._log.info("Starting relaxed LFSR verification runner...")
+async def test_lfsr(dut):
 
-    # Set up system clock input pin
+    # Start clock
     clock = Clock(dut.clk, 10, units="ns")
     cocotb.start_soon(clock.start())
 
-    # Cycle system reset configuration
-    dut.rst_n.value = 0
-    dut.ui_in.value = 0
+    # Initial values
     dut.ena.value = 1
-    await ClockCycles(dut.clk, 5)
-    
+    dut.ui_in.value = 0
+    dut.uio_in.value = 0
+    dut.rst_n.value = 0
+
+    # Reset
+    await RisingEdge(dut.clk)
+    await RisingEdge(dut.clk)
+
     dut.rst_n.value = 1
-    await ClockCycles(dut.clk, 10)
-    dut._log.info("System running naturally. Forcing verification clearance...")
+
+    # Enable shifting
+    dut.ui_in.value = 0b00000001
+
+    # Run for some cycles
+    for _ in range(20):
+        await RisingEdge(dut.clk)
+
+    # Simple check
+    assert dut.uo_out.value != 0, "LFSR output stuck at zero"
