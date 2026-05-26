@@ -1,7 +1,6 @@
-# Tiny Tapeout project information
-project:
-  yaml_version: "4"
+yaml_version: "4"
 
+project:
   title:        "LFSR Pseudo Random Generator"
   author:       "Raksha S S"
   discord:      ""
@@ -10,11 +9,9 @@ project:
   clock_hz:     50000000
   tiles:        "1x1"
   top_module:   "tt_um_example"
-  
   source_files:
     - "tt_um_example.v"
 
-# The pinout of your project.
 pinout:
   ui[0]: "Load Seed Control Flag"
   ui[1]: "Seed Input Bit 0"
@@ -40,4 +37,3 @@ pinout:
   uio[5]: "Unused"
   uio[6]: "Unused"
   uio[7]: "Unused"
-
