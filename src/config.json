@@ -2,5 +2,6 @@
   "TOP_MODULE": "tt_um_example",
   "VERILOG_FILES": [
     "dir::tt_um_example.v"
-  ]
+  ],
+  "COMPILE_PRIMARY_AS_IS": true
 }
