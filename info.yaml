@@ -1,7 +1,9 @@
+yaml_version: 6
+
 project:
   title: "8-bit LFSR Random Generator"
   author: "Raksha"
-  discord: "raksha_123"
+  discord: "your_discord_username"
   description: "An 8-bit pseudo-random number generator using Linear Feedback Shift Register architecture."
   language: "Verilog"
   clock_hz: 1000000
