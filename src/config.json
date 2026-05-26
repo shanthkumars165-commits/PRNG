@@ -1,62 +1,6 @@
 {
-  "project": {
-    "title": "LFSR Pseudo-Random Number Generator",
-    "description": "An 8-bit maximal-period LFSR producing parallel random bytes and serial bit streams.",
-    "author": "Raksha S S",
-    "language": "Verilog",
-    "clock_hz": 50000000,
-    "tiles": "1x1"
-  },
-  "pinout": {
-    "ui_in": [
-      "Load Seed Control Flag (Active High)",
-      "Seed Initialization Value Bit 0",
-      "Seed Initialization Value Bit 1",
-      "Seed Initialization Value Bit 2",
-      "Seed Initialization Value Bit 3",
-      "Seed Initialization Value Bit 4",
-      "Seed Initialization Value Bit 5",
-      "Seed Initialization Value Bit 6"
-    ],
-    "uo_out": [
-      "Parallel Random Output Bit 0",
-      "Parallel Random Output Bit 1",
-      "Parallel Random Output Bit 2",
-      "Parallel Random Output Bit 3",
-      "Parallel Random Output Bit 4",
-      "Parallel Random Output Bit 5",
-      "Parallel Random Output Bit 6",
-      "Parallel Random Output Bit 7"
-    ],
-    "uio_in": [
-      "Unused",
-      "Unused",
-      "Unused",
-      "Unused",
-      "Unused",
-      "Unused",
-      "Unused",
-      "Unused"
-    ],
-    "uio_out": [
-      "Serial Data Bit Stream Output",
-      "Unused",
-      "Unused",
-      "Unused",
-      "Unused",
-      "Unused",
-      "Unused",
-      "Unused"
-    ],
-    "uio_oe": [
-      "Serial Output Enable (Tied High)",
-      "Unused (Input Mode)",
-      "Unused (Input Mode)",
-      "Unused (Input Mode)",
-      "Unused (Input Mode)",
-      "Unused (Input Mode)",
-      "Unused (Input Mode)",
-      "Unused (Input Mode)"
-    ]
-  }
+  "TOP_MODULE": "tt_um_example",
+  "VERILOG_FILES": [
+    "dir::tt_um_example.v"
+  ]
 }
