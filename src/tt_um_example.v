@@ -19,12 +19,13 @@ module tt_um_example (
     wire input_anchor;
     assign input_anchor = ena ^ (^ui_in) ^ (^uio_in);
 
-    // COMBINATIONAL PIN BINDING ARCHITECTURE:
-    // This structurally forces the synthesis backend to route every single mandatory
-    // output array wire trace to prevent them from getting optimized out.
-    assign uo_out   = lfsr_reg ^ {7'b0000000, input_anchor};
-    assign uio_out  = 8'b00000000 ^ {7'b0000000, input_anchor};
-    assign uio_oe   = 8'b00000000 ^ {7'b0000000, input_anchor};
+    // COMBINATIONAL REPLICATED PIN BINDING ARCHITECTURE:
+    // We replicate 'input_anchor' to all 8 bits using {8{input_anchor}}.
+    // This structurally FORCES the synthesis backend to route every single wire
+    // trace for uo_out, uio_out, and uio_oe, leaving absolutely nothing to prune!
+    assign uo_out   = lfsr_reg ^ {8{input_anchor}};
+    assign uio_out  = 8'b00000000 ^ {8{input_anchor}};
+    assign uio_oe   = 8'b00000000 ^ {8{input_anchor}};
 
     // Standard Maximum-Period 8-bit LFSR Sequential Circuitry Block
     always @(posedge clk or negedge rst_n) begin
