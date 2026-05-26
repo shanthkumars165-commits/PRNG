@@ -11,10 +11,6 @@ module tt_um_raksha_lfsr (
 
     reg [7:0] lfsr;
 
-    // Use all otherwise-unused inputs
-    wire _unused;
-    assign _unused = &{uio_in, ui_in[7:2], 1'b0};
-
     // Feedback polynomial:
     // x^8 + x^6 + x^5 + x^4 + 1
 
@@ -32,10 +28,10 @@ module tt_um_raksha_lfsr (
             lfsr <= {lfsr[6:0], feedback};
     end
 
-    // Outputs
+    // Main outputs
     assign uo_out = lfsr;
 
-    // No bidirectional outputs used
+    // Disable bidirectional pins completely
     assign uio_out = 8'b00000000;
     assign uio_oe  = 8'b00000000;
 
