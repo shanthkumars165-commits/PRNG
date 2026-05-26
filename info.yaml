@@ -16,7 +16,7 @@ project:
     - "tt_um_raksha_lfsr.v"
 
 pinout:
-  ui[0]: "Enable"
+  ui[0]: "Enable Shift"
   ui[1]: "Load Seed"
   ui[2]: "Seed Bit 0"
   ui[3]: "Seed Bit 1"
