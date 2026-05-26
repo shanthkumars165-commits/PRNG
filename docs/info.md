@@ -9,12 +9,15 @@ You can also include images in this folder and reference them in the markdown. E
 
 ## How it works
 
-Explain how your project works
+This project implements an 8-bit maximal-period Linear Feedback Shift Register (LFSR). It uses XNOR feedback taps at positions 8, 6, 5, and 4 to generate a pseudo-random sequence of 255 distinct non-zero states. When the load seed control pin is pulled high, an external initialization value is stored into the internal registers.
 
 ## How to test
 
-Explain how to use your project
+Provide a continuous system clock signal to the clock pin. Toggle the asynchronous active-low reset pin low to reset the counter state, then release it high. Observe the changing random binary combinations running across the parallel outputs.
+## External Hardware
 
-## External hardware
+No specialized external PMOD boards are strictly required. For hardware verification and testing, the following can be used:
+* **LEDs or Logic Analyzer:** Connected to `uo_out[7:0]` to visually verify the changing pseudo-random parallel byte patterns.
+* **Oscilloscope or Logic Analyzer:** Connected to `uio_out[0]` to capture and monitor the serial data bitstream output.
+* **Dip Switches / Push Buttons:** Connected to `ui_in[7:0]` to manually toggle control inputs and load custom seed initialization states.
 
-List external hardware used in your project (e.g. PMOD, LED display, etc), if any
