@@ -11,11 +11,12 @@ module tt_um_raksha_lfsr (
 
     reg [7:0] lfsr;
 
-    // Properly consume unused input pins
-    wire unused;
-    assign unused = &uio_in;
+    // Tell synthesis these are intentionally unused
+    wire _unused = &{ena, uio_in, 1'b0};
 
-    // Feedback polynomial
+    // Feedback polynomial:
+    // x^8 + x^6 + x^5 + x^4 + 1
+
     wire feedback;
     assign feedback = lfsr[7] ^ lfsr[5] ^ lfsr[4] ^ lfsr[3];
 
@@ -23,16 +24,15 @@ module tt_um_raksha_lfsr (
         if (!rst_n)
             lfsr <= 8'b00000001;
 
-        else if (ena && ui_in[1])
+        else if (ui_in[1])
             lfsr <= {2'b00, ui_in[7:2]};
 
-        else if (ena && ui_in[0])
+        else if (ui_in[0])
             lfsr <= {lfsr[6:0], feedback};
     end
 
     assign uo_out = lfsr;
 
-    // Disable bidirectional outputs
     assign uio_out = 8'b00000000;
     assign uio_oe  = 8'b00000000;
 
