@@ -1,17 +1,19 @@
 # Tiny Tapeout project information
 project:
-  title:        "LFSR Pseudo-Random Number Generator"
+  yaml_version: "4"             # Added to satisfy the 'yaml_version' check
+
+  title:        "LFSR Pseudo Random Generator"
   author:       "Raksha S S"
   discord:      ""
-  description:  "An 8-bit maximal-period LFSR producing parallel random bytes and serial streams."
+  description:  "An 8-bit maximal-period LFSR producing random parallel bytes and serial streams."
   language:     "Verilog"
   clock_hz:     50000000
   tiles:        "1x1"
   top_module:   "tt_um_example"
-
-# List your project's source files here.
-source_files:
-  - "tt_um_example.v"
+  
+  # Moved inside the project section block to fix the 'source_files' error
+  source_files:
+    - "tt_um_example.v"
 
 # The pinout of your project.
 pinout:
