@@ -1,7 +1,7 @@
 project:
   title: "8-bit LFSR Random Generator"
   author: "Raksha"
-  discord: "your_discord_username"
+  discord: "raksha_123"
   description: "An 8-bit pseudo-random number generator using Linear Feedback Shift Register architecture."
   language: "Verilog"
   clock_hz: 1000000
