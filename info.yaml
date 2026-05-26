@@ -1,35 +1,38 @@
-yaml_version: 6
-
 project:
-  title:        "LFSR Pseudo Random Generator"
-  author:       "Raksha S S"
-  discord:      ""
-  description:  "An 8-bit maximal-period LFSR producing random parallel bytes and serial streams."
-  language:     "Verilog"
-  clock_hz:     50000000
-  tiles:        "1x1"
-  top_module:   "tt_um_example"
+  title: "8-bit LFSR Random Generator"
+  author: "Raksha"
+  discord: "your_discord_username"
+  description: "An 8-bit pseudo-random number generator using Linear Feedback Shift Register architecture."
+  language: "Verilog"
+  clock_hz: 1000000
+
+  tiles: "1x1"
+
+  top_module: "tt_um_raksha_lfsr"
+
   source_files:
-    - "tt_um_example.v"
+    - "tt_um_raksha_lfsr.v"
 
 pinout:
-  ui[0]: "Load Seed Control Flag"
-  ui[1]: "Seed Input Bit 0"
-  ui[2]: "Seed Input Bit 1"
-  ui[3]: "Seed Input Bit 2"
-  ui[4]: "Seed Input Bit 3"
-  ui[5]: "Seed Input Bit 4"
-  ui[6]: "Seed Input Bit 5"
-  ui[7]: "Seed Input Bit 6"
-  uo[0]: "Parallel Output Bit 0"
-  uo[1]: "Parallel Output Bit 1"
-  uo[2]: "Parallel Output Bit 2"
-  uo[3]: "Parallel Output Bit 3"
-  uo[4]: "Parallel Output Bit 4"
-  uo[5]: "Parallel Output Bit 5"
-  uo[6]: "Parallel Output Bit 6"
-  uo[7]: "Parallel Output Bit 7"
-  uio[0]: "Serial Data Stream Out"
+  ui[0]: "Enable"
+  ui[1]: "Load Seed"
+  ui[2]: "Seed Bit 0"
+  ui[3]: "Seed Bit 1"
+  ui[4]: "Seed Bit 2"
+  ui[5]: "Seed Bit 3"
+  ui[6]: "Seed Bit 4"
+  ui[7]: "Seed Bit 5"
+
+  uo[0]: "LFSR Bit 0"
+  uo[1]: "LFSR Bit 1"
+  uo[2]: "LFSR Bit 2"
+  uo[3]: "LFSR Bit 3"
+  uo[4]: "LFSR Bit 4"
+  uo[5]: "LFSR Bit 5"
+  uo[6]: "LFSR Bit 6"
+  uo[7]: "LFSR Bit 7"
+
+  uio[0]: "Unused"
   uio[1]: "Unused"
   uio[2]: "Unused"
   uio[3]: "Unused"
