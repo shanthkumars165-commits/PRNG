@@ -1,6 +1,6 @@
 # Tiny Tapeout project information
 project:
-  yaml_version: "4"             # Added to satisfy the 'yaml_version' check
+  yaml_version: "4"
 
   title:        "LFSR Pseudo Random Generator"
   author:       "Raksha S S"
@@ -11,7 +11,6 @@ project:
   tiles:        "1x1"
   top_module:   "tt_um_example"
   
-  # Moved inside the project section block to fix the 'source_files' error
   source_files:
     - "tt_um_example.v"
 
@@ -41,3 +40,4 @@ pinout:
   uio[5]: "Unused"
   uio[6]: "Unused"
   uio[7]: "Unused"
+
